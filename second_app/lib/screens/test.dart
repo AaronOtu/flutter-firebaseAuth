@@ -5,14 +5,18 @@ class MyTest extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<String> daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    List<String> dateOfWeek = ["12", "13", "14", "15", "16", "17", "18"];
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(250.0), 
+        preferredSize: const Size.fromHeight(250.0),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(20), // Rounded border for AppBar
+            borderRadius:
+                BorderRadius.circular(20), // Rounded border for AppBar
             child: AppBar(
               backgroundColor: Colors.red,
               leading: const Icon(
@@ -20,18 +24,23 @@ class MyTest extends StatelessWidget {
                 color: Colors.white,
                 size: 30,
               ),
-              flexibleSpace: const Column(
+              flexibleSpace: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   // "March" and Dropdown just above the calendar
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
+                  const Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
+                         SizedBox(width: 8),
                         Text(
                           "March",
-                          style: TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold, color: Colors.white),
+                          style: TextStyle(
+                              fontSize: 28.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
                         ),
                         SizedBox(width: 10),
                         Icon(
@@ -42,40 +51,36 @@ class MyTest extends StatelessWidget {
                       ],
                     ),
                   ),
-                  // Calendar layout 
+                  // Calendar layout
                   Padding(
-                    padding: EdgeInsets.only(bottom: 16.0),
+                    padding: const EdgeInsets.only(bottom: 16.0),
                     child: Column(
                       children: [
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 16.0),
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children:  [
-                              Text("Sun", style: TextStyle(fontSize: 16, color: Colors.white)),
-                              Text("Mon", style: TextStyle(fontSize: 16, color: Colors.white)),
-                              Text("Tue", style: TextStyle(fontSize: 16, color: Colors.white)),
-                              Text("Wed", style: TextStyle(fontSize: 16, color: Colors.white)),
-                              Text("Thu", style: TextStyle(fontSize: 16, color: Colors.white)),
-                              Text("Fri", style: TextStyle(fontSize: 16, color: Colors.white)),
-                              Text("Sat", style: TextStyle(fontSize: 16, color: Colors.white)),
-                            ],
+                            children: daysOfWeek.map((day) {
+                              return Text(
+                                day,
+                                style: const TextStyle(
+                                    fontSize: 16, color: Colors.white),
+                              );
+                            }).toList(),
                           ),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 16.0),
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children:  [
-                              Text("12", style: TextStyle(fontSize: 16, color: Colors.white)),
-                              Text("13", style: TextStyle(fontSize: 16, color: Colors.white)),
-                              Text("14", style: TextStyle(fontSize: 16, color: Colors.white)),
-                              Text("15", style: TextStyle(fontSize: 16, color: Colors.white)),
-                              Text("16", style: TextStyle(fontSize: 16, color: Colors.white)),
-                              Text("17", style: TextStyle(fontSize: 16, color: Colors.white)),
-                              Text("18", style: TextStyle(fontSize: 16, color: Colors.white)),
-                            ],
+                            children: dateOfWeek.map((day) {
+                              return Text(
+                                day,
+                                style: const TextStyle(
+                                    fontSize: 16, color: Colors.white),
+                              );
+                            }).toList(),
                           ),
                         ),
                       ],
@@ -101,21 +106,20 @@ class MyTest extends StatelessWidget {
         children: [
           // -------------- first container ----------------------
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 8.0),
             child: Container(
-              height: 150.0,
+              height: 100.0,
               decoration: BoxDecoration(
                 color: const Color.fromARGB(255, 233, 212, 24),
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(30),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  
                   const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children:  [
+                    children: [
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16.0),
                         child: Text(
@@ -152,7 +156,9 @@ class MyTest extends StatelessWidget {
               ),
             ),
           ),
-          // ---------------Second Container-----------
+
+
+          // ---------------SECOND CONTAINER-----------
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -161,50 +167,85 @@ class MyTest extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20), // Rounded border
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
                     children: [
-                      // Column for the three texts
-                      Column(
+                      const Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          // text columns
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                "12:00-1:00 PM",
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Text(
+                                "One-to-one",
+                                style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(height: 8.0),
+                              Text(
+                                "Repeats every two weeks",
+                                style: TextStyle(fontSize: 16.0),
+                              ),
+                            ],
+                          ),
+
+                          Stack(
+                            children: [
+                              CircleAvatar(
+                                radius: 30,
+                                foregroundImage: AssetImage(
+                                    'images/aaron.jpg'), // Replace with your image asset
+                              ),
+                              Positioned(
+                                left:
+                                    30, // Adjust the overlap by changing the value
+                                child: CircleAvatar(
+                                  radius: 30,
+                                  foregroundImage: AssetImage(
+                                      'images/aaron.jpg'), 
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      const Spacer(),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text(
-                            "12:00-1:00 PM",
-                            style: TextStyle(fontSize: 16.0, ),
-                          ),
-                          SizedBox(height: 8.0), 
-                          Text(
-                            "One-to-one",
-                            style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(height: 8.0), 
-                          Text(
-                            "Repeats every two weeks",
-                            style: TextStyle(fontSize: 16.0),
-                          ),
-                        ],
-                      ),
-                    
-                      Stack(
-                        children: [
-                          
-                          CircleAvatar(
-                            radius: 30,
-                            foregroundImage: AssetImage('images/aaron.jpg'), // Replace with your image asset
-                          ),
-                          Positioned(
-                            left: 30, // Adjust the overlap by changing the value
-                            child: CircleAvatar(
-                              radius: 30,
-                              foregroundImage: AssetImage('images/aaron.jpg'), // Replace with your image asset
+                          ElevatedButton(
+                              onPressed: () {}, child: const Text("Today")),
+                             const SizedBox(width: 8),
+                          ElevatedButton(
+                              onPressed: () {}, child: const Text("1h")),
+                              const SizedBox(width:147),
+                          Align(
+                            alignment: Alignment.bottomRight,
+                            child: FloatingActionButton(
+                              onPressed: () {},
+                              backgroundColor: Colors.black,
+                              shape: const CircleBorder(),
+                              child: const Icon(
+                                Icons.north_east,
+                                color: Colors.white,
+                              ),
                             ),
-                          ),
+                          )
                         ],
-                      ),
+                      )
                     ],
                   ),
                 ),
@@ -218,7 +259,89 @@ class MyTest extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(20), 
+                  borderRadius: BorderRadius.circular(20), // Rounded border
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      const Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          // text columns
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                "1:00-2:30 PM",
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Text(
+                                "PM Meeting",
+                                style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(height: 8.0),
+                              Text(
+                                "Discussion of tasks for the month",
+                                style: TextStyle(fontSize: 16.0),
+                              ),
+                            ],
+                          ),
+
+                          Stack(
+                            children: [
+                              CircleAvatar(
+                                radius: 30,
+                                foregroundImage: AssetImage(
+                                    'images/aaron.jpg'), // Replace with your image asset
+                              ),
+                              Positioned(
+                                left:
+                                    30, // Adjust the overlap by changing the value
+                                child: CircleAvatar(
+                                  radius: 30,
+                                  foregroundImage: AssetImage(
+                                      'images/aaron.jpg'), // Replace with your image asset
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      const Spacer(),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          ElevatedButton(
+                              onPressed: () {}, child: const Text("Today")),
+                              const SizedBox(width: 8),
+                          ElevatedButton(
+                              onPressed: () {}, child: const Text("1h 30m")),
+                              const SizedBox(width: 117),
+                          Align(
+                            alignment: Alignment.bottomRight,
+                            child: FloatingActionButton(
+                              onPressed: () {},
+                              backgroundColor: Colors.black,
+                              shape: const CircleBorder(),
+                              child: const Icon(
+                                Icons.north_east,
+                                color: Colors.white,
+                              ),
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
